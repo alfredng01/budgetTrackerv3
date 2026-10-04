@@ -1,0 +1,21 @@
+services:
+  budget-tracker:
+    # Folder containing this project's source (Dockerfile). On Unraid set SOURCE_DIR in the env file.
+    build: ${SOURCE_DIR:-.}
+    image: budget-tracker:latest
+    container_name: budget-tracker
+    restart: unless-stopped
+    ports:
+      - "${HOST_PORT:-3000}:3000"
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      # Pinned here so values from .env (meant for local dev) can't point outside the volume.
+      DATABASE_PATH: /data/budget.db
+      CONFIG_PATH: /data/config.json
+    volumes:
+      # Holds budget.db and config.json (categories/cards, edited from the Settings page).
+      # On Unraid set DATA_DIR to a direct pool path, e.g. /mnt/cache/appdata/budget-tracker/data
+      - ${DATA_DIR:-./data}:/data
+    # Unraid's appdata is usually owned by nobody:users -> set PUID=99 PGID=100.
+    user: "${PUID:-1000}:${PGID:-1000}"

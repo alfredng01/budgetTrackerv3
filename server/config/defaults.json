@@ -1,0 +1,18 @@
+{
+  "categories": [
+    "Gift", "Food", "Groceries", "Bill", "Transportation", "Investment", "Emergency",
+    "Reimbursement", "Apartment", "Cat", "Medical", "Travel", "Entertainment"
+  ],
+  "cards": [
+    "Discover",
+    "Chase Freedom Unlimited",
+    "Chase Sapphire Preferred",
+    "American Express",
+    "Capital One",
+    "Apple Card",
+    { "name": "Venmo", "account": "Venmo" },
+    { "name": "Checking Account", "account": "Checking" }
+  ],
+  "accounts": ["Checking", "High Yield Savings", "Savings", "Venmo"],
+  "paymentAccount": "Checking"
+}
